@@ -2,10 +2,11 @@
 ## Introduction
 This project is built by me, Aung Kaung. The aim of this project is to get my foot through to the world of fintech related data science, as well as further my understanding of Machine Learning models. This project will be well documented with everything that I did within the project written down in this README file. ENJOY THE REPO.
 
-**This project is a work in progress so below is the roadmap/checklist to see how far along I am with the project.
+**DISCLAIMER: PROJECT IS A WORK ON PROGRESS. ONLY AS FAR AS THE DOCUMENTATION REVEALS HAVE BEEN COMPLETED.**
+
 
 ## Roadmap
-- [] 1) Exploratory Data Analysis
+1) Exploratory Data Analysis
 2) Data Cleaning
 3) Feature Engineering
 4) Train/Test Split
@@ -97,11 +98,60 @@ np.int64(0)
 ```
 
 ### 3) Data Types:
-df.dtypes
+Data types seems about right too. Nothing really to change
 
-### Columns table:
-| Column | Keeping? | Reason|
-|---|---|---|
-| trans_date_trans_time | Yes |   |
+| trans_date_trans_time | str     |
+|-----------------------|---------|
+| cc_num                | int64   |
+| merchant              | str     |
+| category              | str     |
+| amt                   | float64 |
+| first                 | str     |
+| last                  | str     |
+| gender                | str     |
+| street                | str     |
+| city                  | str     |
+| state                 | str     |
+| zip                   | int64   |
+| lat                   | float64 |
+| long                  | float64 |
+| city_pop              | int64   |
+| job                   | str     |
+| dob                   | str     |
+| trans_num             | str     |
+| unix_time             | int64   |
+| merch_lat             | float64 |
+| merch_long            | float64 |
+| is_fraud              | int64   |
+| merch_zipcode         | float64 |
 
+### Column Keep/Engineer/Throw table:
+| Columns               | Keeping? | Reason                                                  |
+|-----------------------|----------|---------------------------------------------------------|
+| `trans_date_trans_time` | Engineer | Feature engineer to useful columns                      |
+| `cc_num    `            | No       | High cardinality                                        |
+| `merchant`              | Maybe    | Moderate cardinality                                    |
+| `category`              | Yes      | Merchant category is often predictive                   |
+| `amt  `                 | Yes      | Transaction amount is very important                    |
+| `first`                 | No       | Personal identifier                                     |
+| `last`                  | No       | Personal identifier                                     |
+| `gender`                | No       | Too weak a signal to be useful                          |
+| `street`                | No       | Too high cardinality                                    |
+| `city   `               | Yes      | Can capture regional activity                           |
+| `state   `              | Yes      | Usefuly signal                                          |
+| `zip      `             | No       | High cardinality                                        |
+| `lat       `            | Engineer | Location useful but feature engineer to distance        |
+| `long       `           | Engineer | Location useful but feature engineer to distance        |
+| `city_pop    `          | Yes      | Important city signal                                   |
+| `job          `         | Maybe    | Cardinality pretty high in this dataset for this column |
+| `dob           `        | Engineer | Engineer into age. Very useful signal                   |
+| `trans_num      `       | No       | Unique numbers. High cardinality                        |
+| `unix_time       `      | No       | Redundant                                               |
+| `merch_lat      `       | Engineer | Location useful but feature engineer to distance        |
+| `merch_long     `       | Engineer | Location useful but feature engineer to distance        |
+| `is_fraud       `       | No       | Main source of leakage                                  |
+| `merch_zipcode  `       | No       | Data quality horrible. Too many NA                      |
 
+---
+
+## 3) Feature Engineering
