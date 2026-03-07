@@ -2,8 +2,10 @@
 ## Introduction
 This project is built by me, Aung Kaung. The aim of this project is to get my foot through to the world of fintech related data science, as well as further my understanding of Machine Learning models. This project will be well documented with everything that I did within the project written down in this README file. ENJOY THE REPO.
 
+**This project is a work in progress so below is the roadmap/checklist to see how far along I am with the project.
+
 ## Roadmap
-1) Exploratory Data Analysis
+- [] 1) Exploratory Data Analysis
 2) Data Cleaning
 3) Feature Engineering
 4) Train/Test Split
@@ -11,7 +13,9 @@ This project is built by me, Aung Kaung. The aim of this project is to get my fo
 6) Evaluation
 7) Model Improvement
 
-## Exploratory Data Analysis(EDA):
+---
+
+## 1) Exploratory Data Analysis(EDA):
 ### Some interesting things from inital EDA of the data set
 - Large Dataset (1.2 mil transactions)
 - Massive Class Imbalance in "is_fraud" - only 7,506 fraudulent transactions
@@ -66,5 +70,38 @@ Use this information to engineer a feature that maybe:
 - This proves that there is a big correlation between newly feature engineering `hour` and `is_fraud`
 - As expected, fraudulent activities usually happen at night
 - Model should be focused on this, very big.
+
+---
+
+## 2) Data Cleaning
+### Key checks for the cleaning process:
+1) Missing values
+2) Duplicate Rows
+3) Data Types
+4) Dropping Useless Columns
+
+### 1) Missing Values:
+The dataset is very clean has no missing values except for the column `merch_zipcode`.
+
+`merch_zipcode` is not very usable anyways so it will be dropped.
+
+### 2) Duplicate Rows:
+Again no duplicate rows so we will be moving on.
+Used command:
+```python
+df.duplicated().sum()
+```
+Output:
+```bash
+np.int64(0)
+```
+
+### 3) Data Types:
+df.dtypes
+
+### Columns table:
+| Column | Keeping? | Reason|
+|---|---|---|
+| trans_date_trans_time | Yes |   |
 
 
